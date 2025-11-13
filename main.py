@@ -42,6 +42,11 @@ FOOTER_links = (
     "🌐 <a href='https://e9dd-009-80041-a80rjkupq6lz-deployed-internal.easysite.ai/'>موقعنا الرسمي</a>\n"
     "📱 <a href='https://newoaks.s3.us-west-1.amazonaws.com/AutoDev/80041/d281064b-a82e-4fdf-bc19-d19cc4e0ccd4.apk'>تحميل تطبيق الأندرويد</a>\n"
     "📡 <a href='https://t.me/f90newsnow'>تابعنا على تلجرام</a>"
+            "📢 تابعوا البث المباشر الان\n"
+    "📡 قناة الرياضة: @F90Sports\n"
+    "📡 قناة الرياضة: @F90newsnow\n"
+    "\n🎥 <b>بث مباشر مباريات اليوم:</b>\n"
+    f"🔗 <a href=\"{DIRECT_LINK}\">اضغط هنا</a>\n"
 )
 
 seen_links = set()
