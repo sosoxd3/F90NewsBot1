@@ -75,10 +75,11 @@ def get_video(entry):
 
 # ✉️ إرسال رسالة
 def send_post(title, text, source, link, img=None, video=None):
-    caption = f"🔴 <b>{title}</b>\n\n{text}"
-
     footer = FOOTER.replace("{SOURCE}", link)
 
+    caption = f"🔴 <b>{title}</b>\n\n{text}"
+
+    # 🎥 إذا وجد فيديو → انشر الفيديو في الأعلى
     if video:
         try:
             requests.post(
@@ -91,11 +92,13 @@ def send_post(title, text, source, link, img=None, video=None):
                 files={"video": requests.get(video).content}
             )
             return
-        except:
-            pass
+        except Exception as e:
+            print("⚠️ خطأ في الفيديو:", e)
 
+    # 🖼️ إذا وجد صورة → نشر الصورة في الأعلى
     if img:
         try:
+            photo = requests.get(img).content
             requests.post(
                 f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto",
                 data={
@@ -103,17 +106,17 @@ def send_post(title, text, source, link, img=None, video=None):
                     "caption": caption + footer,
                     "parse_mode": "HTML"
                 },
-                files={"photo": requests.get(img).content}
+                files={"photo": photo}
             )
             return
-        except:
-            pass
+        except Exception as e:
+            print("⚠️ خطأ في الصورة:", e)
 
+    # ✉️ إذا لم يوجد لا صورة ولا فيديو → نشر نص فقط
     requests.post(
         f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
         data={"chat_id": CHAT_ID, "text": caption + footer, "parse_mode": "HTML"}
-    )
-
+)
 
 # 🚀 تشغيل البوت
 def run_bot():
