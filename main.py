@@ -13,7 +13,7 @@ from deep_translator import GoogleTranslator  # للترجمة التلقائي�
 #   إعدادات البوت
 # ============================
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "8340084044:AAH4xDclN0yKECmpTFcnL5eshA4-qREHw4w")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8577796223:AAHOasyLp3qpWwNl5mMZ-vcAGnVa05DTzl4")
 CHAT_ID = os.getenv("CHAT_ID", "@f90newsnow")
 
 SOURCES = [
