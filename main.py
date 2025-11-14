@@ -359,9 +359,12 @@ def test():
     )
     return "تم إرسال رسالة اختبار إلى القناة."
 
-def run_flask():
-    app.run(host="0.0.0.0", port=8080)
-
 if __name__ == "__main__":
-    threading.Thread(target=run_flask, daemon=True).start()
+    from threading import Thread
+
+    # تشغيل Flask على المنفذ الذي يوفره Render
+    port = int(os.environ.get("PORT", 10000))
+    Thread(target=lambda: app.run(host="0.0.0.0", port=port)).start()
+
+    # تشغيل حلقة البوت
     run_bot()
